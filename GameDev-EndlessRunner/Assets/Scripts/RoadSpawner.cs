@@ -20,7 +20,7 @@ public class RoadSpawner : MonoBehaviour
     {
         GameObject movedRoad = roads[0];
         roads.RemoveAt(0);
-        float newZoffest = roads[roads.Count - 1].transform.position.z + offset;
+        float newZoffest = roads[roads.Count - 1].transform.position.z - offset;
         movedRoad.transform.position = new Vector3(0, 0 , newZoffest);
         roads.Add(movedRoad);
     }
