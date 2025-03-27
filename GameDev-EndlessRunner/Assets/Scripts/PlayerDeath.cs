@@ -20,7 +20,7 @@ public class PlayerDeath : MonoBehaviour
     {
 
 
-        if (collision.gameObject.CompareTag("Building"))
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
 
         
