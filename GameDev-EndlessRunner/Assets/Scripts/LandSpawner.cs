@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class LandSpawner : MonoBehaviour
 {
@@ -9,16 +10,21 @@ public class LandSpawner : MonoBehaviour
     private float landSize = 160f;
     private float xPosLeft = 139f;
     private float xPosRight = -139f;
-    private float lastZ = 190f;
+    private float previousZ = 190f;
 
     public List<GameObject> plotsofLand;
+    private List<GameObject> activePlots = new List<GameObject>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameObject FirstLandLeft = GameObject.Find("Land_Empty");
+        GameObject FirstLandRight = GameObject.Find("Land_Empty (1)");
+        activePlots.Add(FirstLandLeft);
+        activePlots.Add(FirstLandRight);
+
         for (int i = 0; i < intialAmount; i++)
         {
             SpawnLand();
-
         }
 
     }
@@ -31,14 +37,29 @@ public class LandSpawner : MonoBehaviour
 
     public void SpawnLand()
     {
-        GameObject landLeft = plotsofLand[Random.Range(0, plotsofLand.Count)];
-        GameObject landRight = plotsofLand[Random.Range(0, plotsofLand.Count)];
 
-        float zPos = lastZ - landSize;
+        GameObject landLeft = Instantiate(plotsofLand[Random.Range(0, plotsofLand.Count)], new Vector3(xPosLeft, 0, previousZ - landSize), Quaternion.identity);
+        GameObject landRight = Instantiate(plotsofLand[Random.Range(0, plotsofLand.Count)], new Vector3(xPosRight, 0, previousZ - landSize), new Quaternion(0, 180, 0,0));
 
-        Instantiate(landLeft, new Vector3(xPosLeft, 0, zPos), landLeft.transform.rotation);
-        Instantiate(landRight, new Vector3(xPosRight, 0, zPos), new Quaternion(0, 180, 0, 0));
+        activePlots.Add(landLeft);
+        activePlots.Add(landRight);
+        
 
-        lastZ -= landSize;
+        previousZ -= landSize;
     }
+
+    public void DestroyLand()
+    {
+        if (activePlots.Count > 0)
+        {
+            GameObject firstPlot = activePlots[0];
+            Destroy(firstPlot);
+            activePlots.RemoveAt(0);
+            Destroy(activePlots[0]); //destroy the right side aswell
+            activePlots.RemoveAt(0);
+        }
+        
+    }
+
+    
 }

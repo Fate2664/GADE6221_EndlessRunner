@@ -1084,7 +1084,7 @@ MonoBehaviour:
   - {fileID: 5129654544702492692, guid: 7433b7ba336509d42bc54de515a39f7e, type: 3}
   - {fileID: 5969921748105540072, guid: c0c8fd91a7aa1544a9f1b6efe31a83ee, type: 3}
   Player: {fileID: 1179318996}
-  DistanceAhead: 500
+  DistanceAhead: 200
 --- !u!1001 &1381864198
 PrefabInstance:
   m_ObjectHideFlags: 0

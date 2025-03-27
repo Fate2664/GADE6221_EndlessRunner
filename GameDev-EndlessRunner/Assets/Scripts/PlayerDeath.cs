@@ -11,7 +11,6 @@ public class PlayerDeath : MonoBehaviour
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
-
     }
 
  

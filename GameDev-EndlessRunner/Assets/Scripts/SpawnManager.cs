@@ -21,5 +21,6 @@ public class SpawnManager : MonoBehaviour
     {
         roadSpawner.MoveRoad();
         LandSpawner.SpawnLand();
+        LandSpawner.DestroyLand();
     }
 }
