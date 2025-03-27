@@ -1,0 +1,35 @@
+using UnityEngine;
+
+public class PlayerDeath : MonoBehaviour
+{
+    private PlayerController playerController;
+
+
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+
+    }
+
+ 
+
+    private void OnTriggerEnter(Collider collision)
+    {
+
+
+        if (collision.gameObject.CompareTag("Building"))
+        {
+
+        
+            playerController.movementSpeed = 0;
+            
+
+
+
+            Destroy(gameObject);
+        }
+    }
+}
