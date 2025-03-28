@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerDeath : MonoBehaviour
 {
     private PlayerController playerController;
+    public DeathScreen deathScreen;
+     
 
 
 
@@ -22,13 +24,13 @@ public class PlayerDeath : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))
         {
 
-        
+           
             playerController.movementSpeed = 0;
-            
-
-
 
             Destroy(gameObject);
+
+             deathScreen.ShowDeathScreen();
+
         }
     }
 }

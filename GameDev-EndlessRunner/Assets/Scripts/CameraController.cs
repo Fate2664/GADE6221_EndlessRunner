@@ -9,11 +9,19 @@ public class CameraController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        if (player == null)
+        {
+
+
+            player = GameObject.FindWithTag("Player").transform;
+        }
     }
 
     void LateUpdate()
     {
-        transform.position = new Vector3(player.position.x, player.position.y + yOffset, player.position.z - zOffset);
+        if (player != null)
+        {
+            transform.position = new Vector3(player.position.x, player.position.y + yOffset, player.position.z - zOffset);
+        }
     }
 }
