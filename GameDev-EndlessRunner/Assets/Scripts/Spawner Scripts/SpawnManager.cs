@@ -2,25 +2,35 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    RoadSpawner roadSpawner;
+    RoadSpawner RoadSpawner;
     LandSpawner LandSpawner;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        roadSpawner = GetComponent<RoadSpawner>();
+        RoadSpawner = GetComponent<RoadSpawner>();
         LandSpawner = GetComponent<LandSpawner>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SpawnTriggerEntered()
     {
-        roadSpawner.MoveRoad();
+        Invoke(nameof(SpawnRoad), 0.2f);
         LandSpawner.SpawnLand();
         LandSpawner.DestroyLand();
+
+    }
+
+
+
+    private void SpawnRoad()
+    {
+        RoadSpawner.MoveRoad();
     }
 }
+
+   
