@@ -8,7 +8,7 @@ using UnityEngine;
 public class RoadSpawner : MonoBehaviour
 {
     public List<GameObject> roads;
-    private float Zoffset = 155f;
+    private float Zoffset = 160f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,12 +21,6 @@ public class RoadSpawner : MonoBehaviour
 
     public void MoveRoad()
     {
-        StartCoroutine(MoveRoadWithDelay());
-    }
-
-    private IEnumerator MoveRoadWithDelay()
-    {
-        yield return new WaitForSeconds(0.2f);
 
         GameObject movedRoad = roads[0];
         float newZoffest = roads[roads.Count - 1].transform.position.z - Zoffset;
@@ -38,5 +32,7 @@ public class RoadSpawner : MonoBehaviour
         movedRoad.transform.position = new Vector3(newXoffset, newYoffset, newZoffest);
         roads.Add(movedRoad);
     }
+
+   
 
 }

@@ -50,16 +50,24 @@ public class LandSpawner : MonoBehaviour
 
     public void DestroyLand()
     {
-        if (activePlots.Count > 0)
+        if (activePlots.Count >= 2)
         {
             GameObject firstPlot = activePlots[0];
+            GameObject secondPlot = activePlots[1];
+
             Destroy(firstPlot);
+            Destroy(secondPlot);
+
             activePlots.RemoveAt(0);
-            Destroy(activePlots[0]); //destroy the right side aswell
             activePlots.RemoveAt(0);
         }
         
     }
+
+
+    
+
+    
 
     
 }
