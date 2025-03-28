@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public static float moveH;
     public static float moveV;
     public SpawnManager spawnManager;
+   
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,10 +24,12 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         MoveCharacter(moveH, moveV);
+
     }
 
     private void MoveCharacter(float directionH, float directionV)
     {
+     
         transform.Translate(new Vector3 (directionH * movementSpeed, 0, directionV * movementSpeed) * Time.deltaTime);
     }
 
