@@ -1617,6 +1617,9 @@ MonoBehaviour:
   plotsofLand:
   - {fileID: 1873662789308746746, guid: 1c4e829c39a110a42afa8d1cfc79fbc2, type: 3}
   - {fileID: 1873662789308746746, guid: 34e52d2922a888c40a49deea0b100655, type: 3}
+  - {fileID: 1873662789308746746, guid: 25332091bf28b9e49920e6e6132821e9, type: 3}
+  - {fileID: 1873662789308746746, guid: 046ad2108d4b13143bec2410d272b5c1, type: 3}
+  - {fileID: 1873662789308746746, guid: d7eeb7d6abb21064e885aefeb3326a9b, type: 3}
 --- !u!114 &1208644401
 MonoBehaviour:
   m_ObjectHideFlags: 0

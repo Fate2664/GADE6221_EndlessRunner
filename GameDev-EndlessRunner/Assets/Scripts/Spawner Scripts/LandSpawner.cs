@@ -6,7 +6,7 @@ using UnityEngine.WSA;
 public class LandSpawner : MonoBehaviour
 {
 
-    private int intialAmount = 10;
+    private int intialAmount = 15;
     private float landSize = 160f;
     private float xPosLeft = 139f;
     private float xPosRight = -139f;
