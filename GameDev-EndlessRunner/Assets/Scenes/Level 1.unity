@@ -1226,6 +1226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plotsofLand:
   - {fileID: 1873662789308746746, guid: 1c4e829c39a110a42afa8d1cfc79fbc2, type: 3}
+  - {fileID: 1873662789308746746, guid: 34e52d2922a888c40a49deea0b100655, type: 3}
 --- !u!114 &1208644401
 MonoBehaviour:
   m_ObjectHideFlags: 0
