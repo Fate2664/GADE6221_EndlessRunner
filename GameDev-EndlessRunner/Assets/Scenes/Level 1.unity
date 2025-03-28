@@ -2262,6 +2262,7 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015392335}
   m_Enabled: 1
+<<<<<<< Updated upstream
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -2353,6 +2354,14 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015392335}
   m_CullTransparentMesh: 1
+=======
+  serializedVersion: 3
+  m_Size: {x: 1.6132559, y: 1.9810551, z: 4.8286242}
+  m_Center: {x: 0.06916227, y: 0.49052745, z: 0.4915352}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!1 &2033129437 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 963480757602541534, guid: 0e12e5318317dad4481c223d7118fb90, type: 3}
@@ -2489,6 +2498,98 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1697ef5073defa458e40968ffff2b30, type: 3}
+<<<<<<< Updated upstream
+=======
+--- !u!1001 &2098769872
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 53.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_Name
+      value: sport car 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1983227839}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1983227838}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1983227837}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1983227841}
+  m_SourcePrefab: {fileID: 100100000, guid: 448d8c1b1104baf428d8b51199defb44, type: 3}
+>>>>>>> Stashed changes
 --- !u!1 &2111676846 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 963480757602541534, guid: 0e12e5318317dad4481c223d7118fb90, type: 3}
