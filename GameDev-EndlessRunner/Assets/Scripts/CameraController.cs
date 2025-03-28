@@ -4,8 +4,8 @@ public class CameraController : MonoBehaviour
 {
     private Transform player;
 
-    private float yOffset = 5f;
-    private float zOffset = -25f;
+    public float yOffset = 5f;
+    public float zOffset = -25f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

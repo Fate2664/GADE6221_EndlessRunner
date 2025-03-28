@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.ShaderGraph.Internal;
@@ -20,10 +21,18 @@ public class RoadSpawner : MonoBehaviour
 
     public void MoveRoad()
     {
+        StartCoroutine(MoveRoadWithDelay());
+    }
+
+    private IEnumerator MoveRoadWithDelay()
+    {
+        yield return new WaitForSeconds(0.2f);
+
         GameObject movedRoad = roads[0];
         float newZoffest = roads[roads.Count - 1].transform.position.z - Zoffset;
         float newYoffset = 8 + 3.256991f;
         float newXoffset = -3.64609f;
+
         roads.RemoveAt(0);
         //idk why I need to add an x and y offset but if I don't, the roads spawn somewhere else??????????
         movedRoad.transform.position = new Vector3(newXoffset, newYoffset, newZoffest);
