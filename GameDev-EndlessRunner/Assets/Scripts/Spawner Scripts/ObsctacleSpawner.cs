@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -15,15 +16,23 @@ public class FallingBuildingSpawner : MonoBehaviour
     public Transform Player;
 
     public float DistanceAhead = 30f;
+
+    private GameObject spawnedObstacle;
+
    
+    
+
+
 
     // Update is called once per frame
     void Update()
     {
-        SpawnFallingBuilding();
+        SpawnObstacle();
+       
+
     }
 
-    private void SpawnFallingBuilding()
+    private void SpawnObstacle()
     {
         Counter += Time.deltaTime;
        
@@ -31,48 +40,42 @@ public class FallingBuildingSpawner : MonoBehaviour
         if(Counter >= SpawnRate)
         {
 
-            GameObject SpawnBuilding = Buildings[0];
-
             if (Buildings.Count > 0 && Player != null)
             {
                 int randomIndex = Random.Range(0, Buildings.Count);
-                SpawnBuilding = Buildings[randomIndex];
-                Vector3 SpawnPosition;
+               
+                Vector3 SpawnPosition = Vector3.zero;
 
                 switch (randomIndex)
                 {
                     case 0:
                     SpawnPosition = new Vector3(-78, 0, Player.position.z - DistanceAhead);
 
-                    Instantiate(SpawnBuilding, SpawnPosition, Quaternion.identity);
+                    
                         break;
 
                     case 1:
                         SpawnPosition = new Vector3(22, 0, Player.position.z - DistanceAhead);
 
-                        Instantiate(SpawnBuilding, SpawnPosition, Quaternion.identity);
+                       
                         break;
 
 
                 }
 
-                   
-                
+                spawnedObstacle = Instantiate(Buildings[randomIndex], SpawnPosition, Quaternion.identity);
 
-
-
-
-
+                Destroy(spawnedObstacle, 5f);
 
             }
 
-            
-         
                 Counter = 0f;
 
         }
 
-       
-
     }
+
+    
+
+   
 }

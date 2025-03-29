@@ -3,9 +3,9 @@ using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
-    public float movementSpeed = 10.0f;
+    public float StrafeSpeed = 300.0f;
     public static float moveH;
-    public static float moveV;
+    public float MoveForwardSpeed = 300.0f;
     public SpawnManager spawnManager;
    
     
@@ -18,19 +18,19 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         moveH = Input.GetAxis("Horizontal");
-        moveV = Input.GetAxis("Vertical");
+      
     }
 
     void FixedUpdate()
     {
-        MoveCharacter(moveH, moveV);
+        MoveCharacter(moveH);
 
     }
 
-    private void MoveCharacter(float directionH, float directionV)
+    private void MoveCharacter(float directionH)
     {
      
-        transform.Translate(new Vector3 (directionH * movementSpeed, 0, directionV * movementSpeed) * Time.deltaTime);
+        transform.Translate(new Vector3 (directionH * StrafeSpeed, 0, MoveForwardSpeed) * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -25,7 +25,7 @@ public class PlayerDeath : MonoBehaviour
         {
 
            
-            playerController.movementSpeed = 0;
+            playerController.StrafeSpeed = 0;
 
             Destroy(gameObject);
 
