@@ -47,7 +47,6 @@ public class FallingBuildingSpawner : MonoBehaviour
             SpawnRate += -0.5f;
             Debug.Log("It is now harder");
 
-
         }
 
 

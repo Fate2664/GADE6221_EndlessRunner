@@ -1,36 +1,55 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
-    public float StrafeSpeed = 300.0f;
+    public float StrafeSpeed = 10.0f;
     public static float moveH;
     public float MoveForwardSpeed = 300.0f;
     public SpawnManager spawnManager;
-   
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private int desiredLane = 1; //0 = left lane; 1 = right lane
+    public float laneDistance = 300.0f;
 
-    private void Update()
+    void Update()
     {
-        moveH = Input.GetAxis("Horizontal");
-      
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            desiredLane--;
+            if (desiredLane < 0)
+            {
+                desiredLane = 0;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            desiredLane++;
+            if (desiredLane > 1)
+            {
+                desiredLane = 1;
+            }
+        }
+
     }
 
     void FixedUpdate()
     {
-        MoveCharacter(moveH);
+        MoveCharacter();
 
     }
 
-    private void MoveCharacter(float directionH)
+    private void MoveCharacter()
     {
-     
-        transform.Translate(new Vector3 (directionH * StrafeSpeed, 0, MoveForwardSpeed) * Time.deltaTime);
+        Vector3 targetPos = transform.position.z * Vector3.forward;
+        if (desiredLane == 0)
+        {
+            targetPos -= Vector3.left * laneDistance;
+        }
+        else if (desiredLane == 1)
+        {
+            targetPos -= Vector3.right * laneDistance;
+        }
+
+        Vector3 moveDirection = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * StrafeSpeed);
+        transform.position = new Vector3(moveDirection.x, transform.position.y, transform.position.z - (MoveForwardSpeed * Time.deltaTime));
     }
 
     private void OnTriggerEnter(Collider other)
