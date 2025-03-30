@@ -25,12 +25,15 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score = startZ - PlayerPos.position.z;
-
-        if (score > 0)
+        if (PlayerPos != null)
         {
-           
-            ValueText.text = score.ToString("0");
+            score = startZ - PlayerPos.position.z;
+
+            if (score > 0)
+            {
+
+                ValueText.text = score.ToString("0");
+            }
         }
     }
 }
