@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 164466324}
   - component: {fileID: 164466323}
   m_Layer: 5
-  m_Name: ScoreUI
+  m_Name: InGameUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1559,11 +1559,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d621d11f8f8cb19479d2ac003d669047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Buildings:
+  Obsctacles:
   - {fileID: 8929420893673383766, guid: c9824f239cce6fa49915d664a6309e25, type: 3}
   - {fileID: 5969921748105540072, guid: c0c8fd91a7aa1544a9f1b6efe31a83ee, type: 3}
+  - {fileID: 5948713306678977575, guid: 5bcd9c81d082d514baf5cedb2c192f74, type: 3}
   Player: {fileID: 1983227840}
-  DistanceAhead: 400
+  AmbulanceIndicator: {fileID: 2081499581058635209, guid: 4d21ac3562874d244b66a985ac2f9d8d, type: 3}
+  DistanceAhead:
+  - 400
+  - 400
+  - 400
+  - 600
 --- !u!1 &1486538863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,13 +1794,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671258072}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000058114523}
-  m_LocalPosition: {x: -0, y: 59.5, z: 249.1}
+  m_LocalRotation: {x: 0.000000038280287, y: 0.9975954, z: -0.06930628, w: 0.0000005510069}
+  m_LocalPosition: {x: 18.2, y: 21, z: 290.1}
   m_LocalScale: {x: 7.8405576, y: 7.8405576, z: 7.8405576}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.948, y: 180, z: 0}
 --- !u!114 &1671258076
 MonoBehaviour:
   m_ObjectHideFlags: 0

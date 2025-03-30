@@ -12,10 +12,14 @@ public class FallingBuildingSpawner : MonoBehaviour
    
     
 
-    public List<GameObject> Buildings;
+    public List<GameObject> Obsctacles;
     public Transform Player;
+    public GameObject AmbulanceIndicator;
+    
 
-    public float DistanceAhead = 30f;
+    
+
+    public List<float> DistanceAhead;
 
     private GameObject spawnedObstacle;
 
@@ -40,32 +44,84 @@ public class FallingBuildingSpawner : MonoBehaviour
         if(Counter >= SpawnRate)
         {
 
-            if (Buildings.Count > 0 && Player != null)
+            if (Obsctacles.Count > 0 && Player != null)
             {
-                int randomIndex = Random.Range(0, Buildings.Count);
+                int randomIndex = Random.Range(0, Obsctacles.Count);
+             
                
                 Vector3 SpawnPosition = Vector3.zero;
 
                 switch (randomIndex)
                 {
                     case 0:
-                    SpawnPosition = new Vector3(-78, 0, Player.position.z - DistanceAhead);
+                    SpawnPosition = new Vector3(-78, 0, Player.position.z - DistanceAhead[0]);
+                        Debug.Log("Building");
 
                     
                         break;
 
                     case 1:
-                        SpawnPosition = new Vector3(22, 0, Player.position.z - DistanceAhead);
+                        SpawnPosition = new Vector3(22, 0, Player.position.z - DistanceAhead[1] );
+                        Debug.Log("Truck");
 
-                       
+                        break;
+
+                    case 2:
+                        int AmbulanceSpawnPoint;
+                        
+
+                        AmbulanceSpawnPoint = Random.Range(1, 3);
+                        
+
+                        if (AmbulanceSpawnPoint == 1)
+                        {
+                            SpawnPosition = new Vector3(-22, 0, Player.position.z + DistanceAhead[2]);
+
+                            Vector3 indicatorPosition = new Vector3(-22, 45, Player.position.z - DistanceAhead[3]);
+                            AmbulanceIndicator = Instantiate(AmbulanceIndicator, indicatorPosition, Quaternion.identity);
+                            
+
+                        }
+
+                        if (AmbulanceSpawnPoint == 2)
+                        {
+                            SpawnPosition = new Vector3(22, 0, Player.position.z + DistanceAhead[2]);
+
+                            Vector3 indicatorPosition = new Vector3(22, 45, Player.position.z - DistanceAhead[3]);
+                            AmbulanceIndicator = Instantiate(AmbulanceIndicator, indicatorPosition, Quaternion.identity);
+                           
+                        }
+                        
+                        Debug.Log("Ambulance");
                         break;
 
 
                 }
 
-                spawnedObstacle = Instantiate(Buildings[randomIndex], SpawnPosition, Quaternion.identity);
+                if (randomIndex == 0 || randomIndex == 1)
+                {
+                    spawnedObstacle = Instantiate(Obsctacles[randomIndex], SpawnPosition, Quaternion.identity);
+                }
+
+                if (randomIndex == 2)
+                {
+                    spawnedObstacle = Instantiate(Obsctacles[randomIndex], SpawnPosition, Quaternion.Euler(0,180,0));
+                }
+
+                
+                   
+                    
+                
 
                 Destroy(spawnedObstacle, 5f);
+                if (AmbulanceIndicator != null)
+                {
+                    Destroy(AmbulanceIndicator, 6f);
+
+
+
+                }
+
 
             }
 
