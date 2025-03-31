@@ -3137,6 +3137,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2641032263562698344, guid: 75ea76bff547574459a42e83a80cae69, type: 3}
+      propertyPath: laneDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641032263562698344, guid: 75ea76bff547574459a42e83a80cae69, type: 3}
       propertyPath: spawnManager
       value: 
       objectReference: {fileID: 1208644397}
@@ -3146,7 +3150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2641032263562698344, guid: 75ea76bff547574459a42e83a80cae69, type: 3}
       propertyPath: MoveForwardSpeed
-      value: 5
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
