@@ -28,7 +28,6 @@ public class RoadSpawner : MonoBehaviour
         float newXoffset = -3.64609f;
 
         roads.RemoveAt(0);
-        //idk why I need to add an x and y offset but if I don't, the roads spawn somewhere else??????????
         movedRoad.transform.position = new Vector3(newXoffset, newYoffset, newZoffest);
         roads.Add(movedRoad);
     }

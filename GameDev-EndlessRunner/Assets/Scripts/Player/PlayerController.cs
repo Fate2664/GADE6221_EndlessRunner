@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public float MoveForwardSpeed = 300.0f;
     public SpawnManager spawnManager;
     private int desiredLane = 1; //0 = left lane; 1 = right lane
-    public float laneDistance = 300.0f;
+    public float laneDistance = 20.0f;
 
     void Update()
     {
