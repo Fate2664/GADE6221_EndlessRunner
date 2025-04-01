@@ -893,7 +893,31 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1527749136741719199, guid: 19b7e95a091652640b4df605bec6a161, type: 3}
+      propertyPath: rotateY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527749136741719199, guid: 19b7e95a091652640b4df605bec6a161, type: 3}
       propertyPath: rotateZ
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527749136741719199, guid: 19b7e95a091652640b4df605bec6a161, type: 3}
+      propertyPath: isScaling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527749136741719199, guid: 19b7e95a091652640b4df605bec6a161, type: 3}
+      propertyPath: endScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527749136741719199, guid: 19b7e95a091652640b4df605bec6a161, type: 3}
+      propertyPath: endScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527749136741719199, guid: 19b7e95a091652640b4df605bec6a161, type: 3}
+      propertyPath: endScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527749136741719199, guid: 19b7e95a091652640b4df605bec6a161, type: 3}
+      propertyPath: floatSpeed
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1527749136741719199, guid: 19b7e95a091652640b4df605bec6a161, type: 3}
@@ -907,6 +931,10 @@ PrefabInstance:
     - target: {fileID: 1527749136741719199, guid: 19b7e95a091652640b4df605bec6a161, type: 3}
       propertyPath: floatHeight
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527749136741719199, guid: 19b7e95a091652640b4df605bec6a161, type: 3}
+      propertyPath: useEasingForScaling
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1527749136741719199, guid: 19b7e95a091652640b4df605bec6a161, type: 3}
       propertyPath: useEasingForFloating
