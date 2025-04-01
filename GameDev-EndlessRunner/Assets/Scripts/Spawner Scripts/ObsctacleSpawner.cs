@@ -1,30 +1,39 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.VFX;
 
 public class FallingBuildingSpawner : MonoBehaviour
 {
-  
+
     float SpawnRate = 5f;
     float Counter = 0f;
-   
-    
+
+
 
     public List<GameObject> Obsctacles;
     public Transform Player;
     public GameObject AmbulanceIndicator;
-    
 
-    
+
+
 
     public List<float> DistanceAhead;
 
     private GameObject spawnedObstacle;
+    private Vector3 spawnObstaclePosition;
+    private GameObject passTrigger;
+    private GameObject spawnedTrigger;
+    private float yHeightPassTrigger = 8f;
+    private Vector3 spawnTriggerPosition;
 
-   
-    
+
+    private void Start()
+    {
+        passTrigger = GameObject.Find("ObstaclePassTrigger");
+    }
 
 
 
@@ -32,8 +41,8 @@ public class FallingBuildingSpawner : MonoBehaviour
     void Update()
     {
         SpawnObstacle();
-        DifficultyScaling();   
-       
+        DifficultyScaling();
+
 
     }
 
@@ -55,16 +64,15 @@ public class FallingBuildingSpawner : MonoBehaviour
     private void SpawnObstacle()
     {
         Counter += Time.deltaTime;
-       
 
-        if(Counter >= SpawnRate)
+
+        if (Counter >= SpawnRate)
         {
 
             if (Obsctacles.Count > 0 && Player != null)
             {
                 int randomIndex = Random.Range(0, Obsctacles.Count);
-             
-                Vector3 SpawnPosition = Vector3.zero;
+
 
                 switch (randomIndex)
                 {
@@ -72,99 +80,100 @@ public class FallingBuildingSpawner : MonoBehaviour
                     case 0:
                         int BuildingSpawnPoint;
                         BuildingSpawnPoint = Random.Range(1, 3);
-                       
 
-                        if(BuildingSpawnPoint == 1)
+
+                        if (BuildingSpawnPoint == 1)
                         {
-                            SpawnPosition = new Vector3(-240, 0, Player.position.z - DistanceAhead[0]);
-                            spawnedObstacle = Instantiate(Obsctacles[randomIndex], SpawnPosition, Quaternion.identity);
+                            spawnObstaclePosition = new Vector3(-240, 0, Player.position.z - DistanceAhead[0]);
+                            spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.identity);
                         }
 
-                        if(BuildingSpawnPoint == 2)
+                        if (BuildingSpawnPoint == 2)
                         {
-                            SpawnPosition = new Vector3(340, 0, Player.position.z - DistanceAhead[0]);
-                            spawnedObstacle = Instantiate(Obsctacles[randomIndex], SpawnPosition, Quaternion.Euler(0,180,0));
+                            spawnObstaclePosition = new Vector3(340, 0, Player.position.z - DistanceAhead[0]);
+                            spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.Euler(0, 180, 0));
                         }
-                       
+
                         break;
-                //Truck Spawn
+                    //Truck Spawn
                     case 1:
                         int TruckSpawnPoint;
                         TruckSpawnPoint = Random.Range(1, 3);
 
-           
+
 
                         if (TruckSpawnPoint == 1)
                         {
-                            SpawnPosition = new Vector3(22, 0, Player.position.z - DistanceAhead[1]);
-                            spawnedObstacle = Instantiate(Obsctacles[randomIndex], SpawnPosition, Quaternion.identity);
+                            spawnObstaclePosition = new Vector3(22, 0, Player.position.z - DistanceAhead[1]);
+                            spawnTriggerPosition = new Vector3(-22, yHeightPassTrigger, Player.position.z - DistanceAhead[1]);
                         }
-                        
+
                         if (TruckSpawnPoint == 2)
                         {
-                            SpawnPosition = new Vector3(-22, 0, Player.position.z - DistanceAhead[1]);
-                            spawnedObstacle = Instantiate(Obsctacles[randomIndex], SpawnPosition, Quaternion.identity);
+                            spawnObstaclePosition = new Vector3(-22, 0, Player.position.z - DistanceAhead[1]);
+                            spawnTriggerPosition = new Vector3(22, yHeightPassTrigger , Player.position.z - DistanceAhead[1]);
                         }
-                       
+
+                        spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.identity);
+                        spawnedTrigger = Instantiate(passTrigger, spawnTriggerPosition, Quaternion.identity);
+
 
                         break;
 
-                //Ambulance Spawn
+                    //Ambulance Spawn
                     case 2:
                         int AmbulanceSpawnPoint;
-                        
+
 
                         AmbulanceSpawnPoint = Random.Range(1, 3);
 
-                     
+
                         if (AmbulanceSpawnPoint == 1)
                         {
-                            SpawnPosition = new Vector3(-22, 0, Player.position.z + DistanceAhead[2]);
+                            spawnObstaclePosition = new Vector3(-22, 0, Player.position.z + DistanceAhead[2]);
 
                             Vector3 indicatorPosition = new Vector3(-22, 45, Player.position.z - DistanceAhead[3]);
                             AmbulanceIndicator = Instantiate(AmbulanceIndicator, indicatorPosition, Quaternion.identity);
-                            
+
 
                         }
 
                         if (AmbulanceSpawnPoint == 2)
                         {
-                            SpawnPosition = new Vector3(22, 0, Player.position.z + DistanceAhead[2]);
+                            spawnObstaclePosition = new Vector3(22, 0, Player.position.z + DistanceAhead[2]);
 
                             Vector3 indicatorPosition = new Vector3(22, 45, Player.position.z - DistanceAhead[3]);
                             AmbulanceIndicator = Instantiate(AmbulanceIndicator, indicatorPosition, Quaternion.identity);
-                           
+
                         }
-                        spawnedObstacle = Instantiate(Obsctacles[randomIndex], SpawnPosition, Quaternion.Euler(0, 180, 0));
-                      
+                        spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.Euler(0, 180, 0));
+
                         break;
 
 
                 }
 
                 Destroy(spawnedObstacle, 5f);
+                Destroy(spawnedTrigger, 5f);
                 if (AmbulanceIndicator != null)
                 {
                     Destroy(AmbulanceIndicator, 6f);
-
-
-
                 }
                 Counter = 0f;
-             }
-
-                
-
-
             }
 
-                
+
+
 
         }
 
+
+
     }
 
-    
+}
 
-   
+
+
+
 

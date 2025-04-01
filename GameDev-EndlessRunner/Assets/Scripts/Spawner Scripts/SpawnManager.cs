@@ -11,15 +11,18 @@ public class SpawnManager : MonoBehaviour
         LandSpawner = GetComponent<LandSpawner>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+   
 
     public void SpawnTriggerEntered()
     {
-        Invoke(nameof(SpawnRoad), 0.2f);
+        if (PickupManager.PowerUpCheck && PickupManager.pickup == "SpeedPickup")
+        {
+            Invoke(nameof(SpawnRoad), 1f);
+        }
+        else
+        {
+            Invoke(nameof(SpawnRoad), 0.4f);
+        }
         LandSpawner.SpawnLand();
         LandSpawner.DestroyLand();
 
@@ -33,4 +36,4 @@ public class SpawnManager : MonoBehaviour
     }
 }
 
-   
+
