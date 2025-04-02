@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public static float moveH;
     public float MoveForwardSpeed = 300.0f;
     public SpawnManager spawnManager;
+    public Score scoreManager;
     private int desiredLane = 1; //0 = left lane; 1 = right lane
     public float laneDistance = 20.0f;
 
@@ -52,8 +53,16 @@ public class PlayerController : MonoBehaviour
         transform.position = new Vector3(moveDirection.x, transform.position.y, transform.position.z - (MoveForwardSpeed * Time.deltaTime));
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collision)
     {
-        spawnManager.SpawnTriggerEntered();
+        if (collision.CompareTag("RoadSpawn"))
+        {
+            spawnManager.SpawnTriggerEntered();
+
+        }
+        if (collision.CompareTag("ObstacleTrigger"))
+        {
+            scoreManager.IncrementScore();
+        }
     }
 }

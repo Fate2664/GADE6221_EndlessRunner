@@ -20,20 +20,14 @@ public class Score : MonoBehaviour
         startZ = PlayerPos.position.z;
     }
 
-    
-
-    // Update is called once per frame
-    void Update()
+    public void IncrementScore()
     {
-        if (PlayerPos != null)
+        score++;
+        if (score > 0)
         {
-            score = startZ - PlayerPos.position.z;
-
-            if (score > 0)
-            {
-
-                ValueText.text = score.ToString("0");
-            }
+            ValueText.text = score.ToString("0");
         }
     }
+
+   
 }

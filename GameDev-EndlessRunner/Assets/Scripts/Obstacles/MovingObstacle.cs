@@ -1,22 +1,25 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public class MovingObstacle : MonoBehaviour
 {
 
-    public float MovementSpeed = 50.0f;
-   
+    private float[] MovementSpeed = { 500, 300 };
+    private int obstacleIndex;
  
-   
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+ 
 
     // Update is called once per frame
     void Update()
     {
-            transform.Translate(Vector3.forward * MovementSpeed * Time.deltaTime);
+        switch (obstacleIndex)
+        {
+            case 0:
+                transform.Translate(Vector3.forward * MovementSpeed[0] * Time.deltaTime);
+                break;
+            case 1:
+                transform.Translate(Vector3.forward * MovementSpeed[1] * Time.deltaTime);
+                break;
+        }
+
     }
 }

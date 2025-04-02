@@ -5,7 +5,7 @@ using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.VFX;
 
-public class FallingBuildingSpawner : MonoBehaviour
+public class ObstacleSpawner : MonoBehaviour
 {
 
     float SpawnRate = 5f;
@@ -21,8 +21,9 @@ public class FallingBuildingSpawner : MonoBehaviour
 
 
     public List<float> DistanceAhead;
-
+    public int obstacleIndex = 0;
     private GameObject spawnedObstacle;
+    private Vector3 indicatorPosition;
     private Vector3 spawnObstaclePosition;
     private GameObject passTrigger;
     private GameObject spawnedTrigger;
@@ -93,14 +94,12 @@ public class FallingBuildingSpawner : MonoBehaviour
                             spawnObstaclePosition = new Vector3(340, 0, Player.position.z - DistanceAhead[0]);
                             spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.Euler(0, 180, 0));
                         }
-
                         break;
                     //Truck Spawn
                     case 1:
                         int TruckSpawnPoint;
                         TruckSpawnPoint = Random.Range(1, 3);
-
-
+                        obstacleIndex = 1;
 
                         if (TruckSpawnPoint == 1)
                         {
@@ -111,7 +110,7 @@ public class FallingBuildingSpawner : MonoBehaviour
                         if (TruckSpawnPoint == 2)
                         {
                             spawnObstaclePosition = new Vector3(-22, 0, Player.position.z - DistanceAhead[1]);
-                            spawnTriggerPosition = new Vector3(22, yHeightPassTrigger , Player.position.z - DistanceAhead[1]);
+                            spawnTriggerPosition = new Vector3(22, yHeightPassTrigger, Player.position.z - DistanceAhead[1]);
                         }
 
                         spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.identity);
@@ -123,31 +122,27 @@ public class FallingBuildingSpawner : MonoBehaviour
                     //Ambulance Spawn
                     case 2:
                         int AmbulanceSpawnPoint;
-
-
                         AmbulanceSpawnPoint = Random.Range(1, 3);
+                        obstacleIndex = 0;
 
 
                         if (AmbulanceSpawnPoint == 1)
                         {
                             spawnObstaclePosition = new Vector3(-22, 0, Player.position.z + DistanceAhead[2]);
-
-                            Vector3 indicatorPosition = new Vector3(-22, 45, Player.position.z - DistanceAhead[3]);
-                            AmbulanceIndicator = Instantiate(AmbulanceIndicator, indicatorPosition, Quaternion.identity);
-
+                            spawnTriggerPosition = new Vector3(22, yHeightPassTrigger, Player.position.z - DistanceAhead[2]);
+                            indicatorPosition = new Vector3(-22, 45, Player.position.z - DistanceAhead[3]);
 
                         }
 
                         if (AmbulanceSpawnPoint == 2)
                         {
                             spawnObstaclePosition = new Vector3(22, 0, Player.position.z + DistanceAhead[2]);
-
-                            Vector3 indicatorPosition = new Vector3(22, 45, Player.position.z - DistanceAhead[3]);
-                            AmbulanceIndicator = Instantiate(AmbulanceIndicator, indicatorPosition, Quaternion.identity);
-
+                            spawnTriggerPosition = new Vector3(-22, yHeightPassTrigger, Player.position.z - DistanceAhead[2]);
+                            indicatorPosition = new Vector3(22, 45, Player.position.z - DistanceAhead[3]);
                         }
+                        spawnedTrigger = Instantiate(passTrigger, spawnTriggerPosition, Quaternion.identity);
+                        AmbulanceIndicator = Instantiate(AmbulanceIndicator, indicatorPosition, Quaternion.identity);
                         spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.Euler(0, 180, 0));
-
                         break;
 
 
@@ -155,10 +150,8 @@ public class FallingBuildingSpawner : MonoBehaviour
 
                 Destroy(spawnedObstacle, 5f);
                 Destroy(spawnedTrigger, 5f);
-                if (AmbulanceIndicator != null)
-                {
-                    Destroy(AmbulanceIndicator, 6f);
-                }
+                Destroy(AmbulanceIndicator, 6f);
+
                 Counter = 0f;
             }
 
