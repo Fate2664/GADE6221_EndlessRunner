@@ -7,12 +7,6 @@ public class Building : MonoBehaviour
     public float StopPoint = 80.0f;
     private bool IsRotating = true;
     public bool ActivateFall = false;
-   
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

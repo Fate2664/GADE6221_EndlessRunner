@@ -7,8 +7,10 @@ TagManager:
   - SpawnTrigger
   - Building
   - Obstacle
-  - ObstacleTrigger
   - RoadSpawn
+  - StaticObstacleTrigger
+  - MovingObstacleTrigger
+  - ObstacleTrigger
   layers:
   - Default
   - TransparentFX

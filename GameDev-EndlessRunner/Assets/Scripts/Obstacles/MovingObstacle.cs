@@ -4,9 +4,9 @@ public class MovingObstacle : MonoBehaviour
 {
 
     private float[] MovementSpeed = { 500, 300 };
-    private int obstacleIndex;
- 
- 
+    public static int obstacleIndex;
+
+
 
     // Update is called once per frame
     void Update()
@@ -14,7 +14,14 @@ public class MovingObstacle : MonoBehaviour
         switch (obstacleIndex)
         {
             case 0:
-                transform.Translate(Vector3.forward * MovementSpeed[0] * Time.deltaTime);
+                if (this.CompareTag("MovingObstacleTrigger"))
+                {
+                    transform.Translate(Vector3.forward * -MovementSpeed[0] * Time.deltaTime);
+                }
+                else
+                {
+                    transform.Translate(Vector3.forward * MovementSpeed[0] * Time.deltaTime);
+                }
                 break;
             case 1:
                 transform.Translate(Vector3.forward * MovementSpeed[1] * Time.deltaTime);

@@ -60,7 +60,11 @@ public class PlayerController : MonoBehaviour
             spawnManager.SpawnTriggerEntered();
 
         }
-        if (collision.CompareTag("ObstacleTrigger"))
+        if (collision.CompareTag("StaticObstacleTrigger"))
+        {
+            scoreManager.IncrementScore();
+        }
+        if (collision.CompareTag("MovingObstacleTrigger"))
         {
             scoreManager.IncrementScore();
         }
