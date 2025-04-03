@@ -11,20 +11,18 @@ public class Building : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
-
-            if (IsRotating)
+        if (IsRotating)
+        {
+            transform.Rotate(Vector3.forward * RotationSpeed * Time.deltaTime);    
+            //make the object fall according to gravity
+            float zRotation = Mathf.Abs(transform.eulerAngles.z);
+            if (zRotation >= StopPoint && zRotation <= 270f)
             {
-                transform.Rotate(Vector3.forward * RotationSpeed * Time.deltaTime);
-
-                float zRotation = Mathf.Abs(transform.eulerAngles.z);
-                if (zRotation >= StopPoint && zRotation <= 270f)
-                {
-                    IsRotating = false;
-                }
+                IsRotating = false;
             }
-
-
         }
+
+
     }
+}

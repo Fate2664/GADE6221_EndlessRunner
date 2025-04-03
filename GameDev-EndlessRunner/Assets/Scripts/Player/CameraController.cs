@@ -11,9 +11,7 @@ public class CameraController : MonoBehaviour
     {
         if (player == null)
         {
-
-
-            player = GameObject.FindWithTag("Player").transform;
+            player = GameObject.FindWithTag("Player").transform;    //get the player's position
         }
     }
 
@@ -21,7 +19,7 @@ public class CameraController : MonoBehaviour
     {
         if (player != null)
         {
-            transform.position = new Vector3(player.position.x, player.position.y + yOffset, player.position.z - zOffset);
+            transform.position = new Vector3(player.position.x, player.position.y + yOffset, player.position.z - zOffset);  //position the camera behind the player's position after each frame
         }
     }
 }

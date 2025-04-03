@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            desiredLane--;
+            desiredLane--;      //change the desired lane
             if (desiredLane < 0)
             {
                 desiredLane = 0;
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            desiredLane++;
+            desiredLane++;      //change the desired lane
             if (desiredLane > 1)
             {
                 desiredLane = 1;
@@ -33,28 +33,30 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        MoveCharacter();
+        MoveCharacter();    //call the MoveCharacter method
 
     }
 
     private void MoveCharacter()
     {
-        Vector3 targetPos = transform.position.z * Vector3.forward;
+        Vector3 targetPos = transform.position.z * Vector3.forward; //Make the target position infront of the player
         if (desiredLane == 0)
         {
-            targetPos -= Vector3.left * laneDistance;
+            targetPos -= Vector3.left * laneDistance;       //change the target position's x position to the corresponding lane
         }
         else if (desiredLane == 1)
         {
             targetPos -= Vector3.right * laneDistance;
         }
 
-        Vector3 moveDirection = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * StrafeSpeed);
-        transform.position = new Vector3(moveDirection.x, transform.position.y, transform.position.z - (MoveForwardSpeed * Time.deltaTime));
+        Vector3 moveDirection = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * StrafeSpeed);      //make the switching lanes smoother
+        transform.position = new Vector3(moveDirection.x, transform.position.y, transform.position.z - (MoveForwardSpeed * Time.deltaTime));        //move the player to the new postiion
     }
 
     private void OnTriggerEnter(Collider collision)
     {
+
+        //if the player collides with an object, call the corresponding method for that event
         if (collision.CompareTag("RoadSpawn"))
         {
             spawnManager.SpawnTriggerEntered();

@@ -6,26 +6,17 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public Transform PlayerPos;
     public TextMeshProUGUI ValueText;
 
-    private float startZ;
     private float score;
 
-   
   
-
-    void Start()
-    {
-        startZ = PlayerPos.position.z;
-    }
-
     public void IncrementScore()
     {
-        score++;
+        score++;    //increment the score value
         if (score > 0)
         {
-            ValueText.text = score.ToString("0");
+            ValueText.text = score.ToString("0");       //Change the text to show the new score
         }
     }
 

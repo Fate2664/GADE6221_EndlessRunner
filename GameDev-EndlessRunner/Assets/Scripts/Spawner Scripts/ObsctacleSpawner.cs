@@ -7,7 +7,7 @@ using UnityEngine.VFX;
 public class ObstacleSpawner : MonoBehaviour
 {
 
-    float SpawnRate = 5f;
+    float SpawnRate = 3f;
     float Counter = 0f;
 
 
@@ -34,7 +34,8 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Start()
     {
-        movingPassTrigger = GameObject.Find("MovingObstaclePassTrigger");
+        //get the two obstacle triggers
+        movingPassTrigger = GameObject.Find("MovingObstaclePassTrigger");       
         staticPassTrigger = GameObject.Find("StaticObstaclePassTrigger");
     }
 
@@ -45,8 +46,6 @@ public class ObstacleSpawner : MonoBehaviour
     {
         SpawnObstacle();
         DifficultyScaling();
-
-
     }
 
     private void DifficultyScaling()
@@ -57,7 +56,6 @@ public class ObstacleSpawner : MonoBehaviour
         if (GameCounter > DiffIncInterval && SpawnRate > 2)
         {
             SpawnRate += -0.5f;
-            Debug.Log("It is now harder");
 
         }
 
@@ -74,19 +72,19 @@ public class ObstacleSpawner : MonoBehaviour
 
             if (Obsctacles.Count > 0 && Player != null)
             {
-                int randomIndex = Random.Range(0, Obsctacles.Count);
+                int randomIndex = Random.Range(0, Obsctacles.Count);        //choose a random obstacle from the list
 
                 switch (randomIndex)
                 {
                     //Building Spawn
                     case 0:
                         int BuildingSpawnPoint;
-                        BuildingSpawnPoint = Random.Range(1, 3);
+                        BuildingSpawnPoint = Random.Range(1, 3);        //choose a random lane/side in which to spawn the obstacle
 
                         if (BuildingSpawnPoint == 1)
                         {
-                            spawnObstaclePosition = new Vector3(-240, 0, Player.position.z - DistanceAhead[0]);
-                            spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.identity);
+                            spawnObstaclePosition = new Vector3(-240, 0, Player.position.z - DistanceAhead[0]);     //determine the position for the obstacle to spawn
+                            spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.identity);     //create a clone of the obstacle and spawn
                         }
 
                         if (BuildingSpawnPoint == 2)
@@ -94,14 +92,14 @@ public class ObstacleSpawner : MonoBehaviour
                             spawnObstaclePosition = new Vector3(340, 0, Player.position.z - DistanceAhead[0]);
                             spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.Euler(0, 180, 0));
                         }
-                        spawnTriggerPosition = new Vector3(0, yHeightPassTrigger, Player.position.z - DistanceAhead[0] - 30f);
-                        spawnedTrigger = Instantiate(staticPassTrigger, spawnTriggerPosition, Quaternion.identity);
+                        spawnTriggerPosition = new Vector3(0, yHeightPassTrigger, Player.position.z - DistanceAhead[0] - 30f);      //Create the position for the trigger to spawn
+                        spawnedTrigger = Instantiate(staticPassTrigger, spawnTriggerPosition, Quaternion.identity);                 //Create a clone of the trigger and spawn it
                         break;
                     //Truck Spawn
                     case 1:
                         int TruckSpawnPoint;
                         TruckSpawnPoint = Random.Range(1, 3);
-                        MovingObstacle.obstacleIndex = 1;
+                        MovingObstacle.obstacleIndex = 1;       //give the moving obstacle index in order to determine the speed of the trigger
 
                         if (TruckSpawnPoint == 1)
                         {
@@ -114,7 +112,6 @@ public class ObstacleSpawner : MonoBehaviour
                             spawnObstaclePosition = new Vector3(-22, 0, Player.position.z - DistanceAhead[1]);
                             spawnTriggerPosition = new Vector3(22, yHeightPassTrigger, Player.position.z - DistanceAhead[1]);
                         }
-                        Debug.Log("Truck");
                         spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.identity);
                         spawnedTrigger = Instantiate(movingPassTrigger, spawnTriggerPosition, Quaternion.identity);
                         break;
@@ -125,7 +122,6 @@ public class ObstacleSpawner : MonoBehaviour
                         AmbulanceSpawnPoint = Random.Range(1, 3);
                         MovingObstacle.obstacleIndex = 0;
 
-                        Debug.Log("Amb");
                         if (AmbulanceSpawnPoint == 1)
                         {
                             spawnObstaclePosition = new Vector3(-22, 0, Player.position.z + DistanceAhead[2]);
@@ -148,6 +144,7 @@ public class ObstacleSpawner : MonoBehaviour
 
                 }
 
+                //destroy the clone after 5 increment points
                 if (spawnedObstacle != null)
                 {
                     Destroy(spawnedObstacle, 5f);

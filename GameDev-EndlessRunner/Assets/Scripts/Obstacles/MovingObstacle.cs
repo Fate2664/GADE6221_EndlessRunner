@@ -3,7 +3,7 @@ using System.Collections.Generic;
 public class MovingObstacle : MonoBehaviour
 {
 
-    private float[] MovementSpeed = { 500, 300 };
+    private float[] MovementSpeed = { 500, 300 };       //set the different speeds for the different obstacles
     public static int obstacleIndex;
 
 
@@ -11,8 +11,9 @@ public class MovingObstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (obstacleIndex)
+        switch (obstacleIndex)          //check which speed it should be
         {
+            //Translate the trigger box depending on the movement speed of that obstacle
             case 0:
                 if (this.CompareTag("MovingObstacleTrigger"))
                 {
