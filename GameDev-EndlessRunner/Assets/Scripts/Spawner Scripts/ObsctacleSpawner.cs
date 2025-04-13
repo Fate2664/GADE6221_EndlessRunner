@@ -84,7 +84,7 @@ public class ObstacleSpawner : MonoBehaviour
                         if (BuildingSpawnPoint == 1)
                         {
                             spawnObstaclePosition = new Vector3(-240, 0, Player.position.z - DistanceAhead[0]);     //determine the position for the obstacle to spawn
-                            spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.identity);     //create a clone of the obstacle and spawn
+                            spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.identity);     //create a clone of the obstacle and 
                         }
 
                         if (BuildingSpawnPoint == 2)
@@ -94,6 +94,8 @@ public class ObstacleSpawner : MonoBehaviour
                         }
                         spawnTriggerPosition = new Vector3(0, yHeightPassTrigger, Player.position.z - DistanceAhead[0] - 30f);      //Create the position for the trigger to spawn
                         spawnedTrigger = Instantiate(staticPassTrigger, spawnTriggerPosition, Quaternion.identity);                 //Create a clone of the trigger and spawn it
+                        spawnedObstacle.transform.SetParent(transform, false);
+                        spawnedTrigger.transform.SetParent(transform, false);
                         break;
                     //Truck Spawn
                     case 1:
@@ -114,6 +116,8 @@ public class ObstacleSpawner : MonoBehaviour
                         }
                         spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.identity);
                         spawnedTrigger = Instantiate(movingPassTrigger, spawnTriggerPosition, Quaternion.identity);
+                        spawnedTrigger.transform.SetParent(transform, this);
+                        spawnedObstacle.transform.SetParent(transform, this);
                         break;
 
                     //Ambulance Spawn
@@ -139,6 +143,9 @@ public class ObstacleSpawner : MonoBehaviour
                         spawnedTrigger = Instantiate(movingPassTrigger, spawnTriggerPosition, Quaternion.identity);
                         spawnedIndicator = Instantiate(AmbulanceIndicator, indicatorPosition, Quaternion.identity);
                         spawnedObstacle = Instantiate(Obsctacles[randomIndex], spawnObstaclePosition, Quaternion.Euler(0, 180, 0));
+                        spawnedTrigger.transform.SetParent(transform, this);
+                        spawnedIndicator.transform.SetParent(transform, this);
+                        spawnedObstacle.transform.SetParent(transform, this);
                         break;
 
 

@@ -35,7 +35,9 @@ public class LandSpawner : MonoBehaviour
     {
         //create a clone from a random plot of land from the list and place it after the previous plot
         GameObject landLeft = Instantiate(plotsofLand[Random.Range(0, plotsofLand.Count)], new Vector3(xPosLeft, 0, previousZ - landSize), Quaternion.identity);
-        GameObject landRight = Instantiate(plotsofLand[Random.Range(0, plotsofLand.Count)], new Vector3(xPosRight, 0, previousZ - landSize), new Quaternion(0, 180, 0,0));
+        GameObject landRight = Instantiate(plotsofLand[Random.Range(0, plotsofLand.Count)], new Vector3(xPosRight, 0, previousZ - landSize), new Quaternion(0, 180, 0, 0));
+        landLeft.transform.SetParent(transform, false);
+        landRight.transform.SetParent(transform, false);
         //add them to the active plots list
         activePlots.Add(landLeft);
         activePlots.Add(landRight);
